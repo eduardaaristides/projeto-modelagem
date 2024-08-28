@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - SaúdePro</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Adicione seu arquivo CSS aqui -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #1C446B;
+            flex-wrap: wrap;
+        }
+        .logo {
+            margin-right: 10px;
+        }
+        .title-container {
+            flex: 1;
+        }
+        .title-container h1 {
+            color: #ffffff;
+            margin: 0;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            margin-top: 100px;
+        }
+        .profile-container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        .profile-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            margin-right: 20px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .profile-header .info {
+            flex: 1;
+        }
+        .profile-header .info input[type="text"],
+        .profile-header .info input[type="number"],
+        .profile-header .info select {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .profile-header .info input[type="file"] {
+            margin-top: 10px;
+        }
+        .add-disease-form {
+            margin-top: 20px;
+        }
+        .add-disease-form input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .add-disease-form button {
+            background-color: #1C446B;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-disease-form button:hover {
+            background-color: #0056b3;
+        }
+        .diseases-list {
+            margin-top: 20px;
+        }
+        .diseases-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .diseases-list ul li {
+            background: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .profile-header img {
+                margin-bottom: 10px;
+            }
+            .add-disease-form input[type="text"] {
+                width: calc(100% - 130px); /* Ajusta a largura para dispositivos menores */
+            }
+            .add-disease-form button {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img width="50" height="50" src="img/Logo Saúde Pró.png" alt="SaúdePro Logo" class="logo"/>
+            <div class="title-container">
+                <h1 class="principal">SaúdePro</h1>
+    </header>
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-header">
+                <img id="profile-img" src="https://via.placeholder.com/100" alt="Foto de perfil">
+                <div class="info">
+                    <h2>Informações do Perfil</h2>
+                    <form id="profile-form">
+                        <input type="text" name="nome" placeholder="Nome Completo" required>
+                        <input type="number" name="idade" placeholder="Idade" min="0" required>
+                        <select name="sexo" required>
+                            <option value="">Selecione o Sexo</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                        <input type="file" id="file-input" accept="image/*">
+                    </form>
+                </div>
+            </div>
+
+            <div class="add-disease-form">
+                <h2>Adicionar Enfermidade</h2>
+                <form id="disease-form">
+                    <input type="text" id="doenca" placeholder="Nome da Enfermidade">
+                    <button type="button" onclick="adicionarDoenca()">Adicionar</button>
+                </form>
+            </div>
+
+            <div class="diseases-list">
+                <h2>Minhas Enfermidades</h2>
+                <ul id="lista-doencas">
+                    <!-- A lista de enfermidades será adicionada aqui -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para adicionar enfermidade à lista
+        function adicionarDoenca() {
+            var doencaInput = document.getElementById("doenca");
+            var doenca = doencaInput.value;
+            if (doenca) {
+                var lista = document.getElementById("lista-doencas");
+                var item = document.createElement("li");
+                item.textContent = doenca;
+                lista.appendChild(item);
+                doencaInput.value = ""; // Limpa o campo de entrada
+            }
+        }
+
+        // Função para exibir pré-visualização da imagem
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-img').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
+
