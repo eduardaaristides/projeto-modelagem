@@ -6,7 +6,7 @@
 }
 
 body {
-    background: url(Design\ sem\ nome\ \(2\).png);
+    background-color: white;
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -39,6 +39,10 @@ header {
     align-items: center;
     text-align: center;
 }
+.title-container h1{
+    color: white;
+    font-size: x-large;
+}
 .time{
     margin-left: 100px;
 }
@@ -48,13 +52,13 @@ nav a {
 }
 
 a {
-    color: black;
+    color:white;
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
-    color: aqua;
+    text-decoration: none;
+    color: black;
 }
 
 .logo {
@@ -77,6 +81,7 @@ header h1 {
     padding: 30px 40px;
     margin-top: 80px; /* Espaço para o cabeçalho */
     text-align: center; /* Centraliza textos e outros elementos */
+    border-color: #1C446B;
 }
 
 h1 {
@@ -104,6 +109,7 @@ h1 {
     font-size: 16px;
     color: black;
     padding: 20px 45px 20px 20px;
+    border-color: #1C446B;
 }
 
 .input-container input::placeholder {
@@ -134,7 +140,7 @@ h1 {
     background-color: #1C446B;
     border: none;
     border-radius: 10px;
-    color: black;
+    color: white;
     font-weight: 500;
     margin-top: 24px;
     cursor: pointer;
